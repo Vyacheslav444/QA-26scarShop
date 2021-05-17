@@ -16,8 +16,13 @@ public class LoginPage extends HomePage{
     WebElement loginPassword;
     @FindBy(name = "login_submit")
     WebElement login;
-    @FindBy(className = "icon-user")
+    @FindBy(className= "icon-user")
+    //@FindBy(css = "a[href$='/en-gb/accounts/']")
     WebElement elementPresent;
+    @FindBy(id = "logout_link")
+    WebElement logout;
+    @FindBy(className= "alert alert-danger")
+    WebElement elementPresentErrors;
 
 
     public void openLogRegForm() {
@@ -29,6 +34,10 @@ public class LoginPage extends HomePage{
         inputText(loginUsername, "books@gmail.com");
         inputText(loginPassword,"Book123123");
     }
+    public void fillRegLogFormInvalidPassword() {
+        inputText(loginUsername, "books@gmail.com");
+        inputText(loginPassword,"Book1231234");
+    }
 
     public void login() {
         login.click();
@@ -37,5 +46,18 @@ public class LoginPage extends HomePage{
 
     public boolean isElementPresent() {
         return elementPresent.isDisplayed();
+    }
+    public boolean isElementPresentErrors() {
+        return elementPresentErrors.isDisplayed();
+    }
+
+    public void clickLogoutButton() {
+        logout.click();
+
+    }
+    public void loginAll(){
+        openLogRegForm();
+        fillRegLogForm();
+        login();
     }
 }

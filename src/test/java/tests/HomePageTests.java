@@ -5,30 +5,24 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.HomePage;
-import pages.PageBase;
-import pages.ProductPade;
+import pages.ProductPage;
 
 public class HomePageTests extends TestBase{
     HomePage homePage;
-    ProductPade productPade;
-
-
+    ProductPage productPage;
 
     @BeforeMethod
     public void pageInit(){
-        homePage = PageFactory.initElements(driver,HomePage.class);
-        productPade = PageFactory.initElements(driver, ProductPade.class);
-
+        homePage = PageFactory.initElements(driver, HomePage.class);
+        productPage = PageFactory.initElements(driver, ProductPage.class);
 
     }
-    @Test
+    @Test (groups = "smoke")
     public void userCanSelectProductInMenuTest() throws InterruptedException {
         homePage.selectCategory();
-
-        homePage.selectProduct();
-
-
-        Assert.assertTrue(productPade.isItProductPage());
+        homePage.selectProduct(1);
+        Assert.assertTrue(productPage.isItProductPage());
 
     }
+
 }
