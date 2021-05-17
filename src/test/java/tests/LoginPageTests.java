@@ -17,13 +17,30 @@ public class LoginPageTests extends TestBase {
 
 
     }
+    @BeforeMethod
+    public void ensurePreconditions(){
+      //  if (loginPage.isElementPresent()){
+       //     loginPage.clickLogoutButton();
+      //  }
+    }
 
     @Test
     public void userLoginTest() {
-        loginPage.openLogRegForm();
-        loginPage.fillRegLogForm();
-        loginPage.login();
+
+        loginPage.loginAll();
+
 
         Assert.assertTrue(loginPage.isElementPresent());
     }
+    @Test
+    public void userNegativeLoginTestInvalidPassword() {
+        loginPage.openLogRegForm();
+        loginPage.fillRegLogFormInvalidPassword();
+        loginPage.login();
+
+        Assert.assertTrue(loginPage.isElementPresentErrors());
+    }
+
+
+
 }

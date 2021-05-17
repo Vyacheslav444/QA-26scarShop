@@ -4,8 +4,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class ProductPade extends PageBase{
-    public ProductPade(WebDriver driver) {
+public class ProductPage extends PageBase{
+    public ProductPage(WebDriver driver) {
         super(driver);
     }
     @FindBy(id ="product_description")
